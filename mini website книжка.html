@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Светът на Лети — 15 спокойни мисии</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,192,203,0.35), transparent 25%),
+        radial-gradient(circle at top right, rgba(196,181,253,0.35), transparent 25%),
+        linear-gradient(to bottom, #fff8e7, #fde7ff);
+      color: #4b2c63;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(#ffd966 2px, transparent 2px),
+        radial-gradient(#caa8ff 2px, transparent 2px),
+        radial-gradient(#ff9ecf 2px, transparent 2px);
+      background-size:120px 120px, 180px 180px, 220px 220px;
+      background-position:20px 40px, 100px 140px, 60px 200px;
+      opacity:0.25;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      position: relative;
+    }
+
+    .hero-header{
+      text-align:center;
+      padding:40px 20px 30px;
+      position:relative;
+    }
+
+    .magic-stars{
+      font-size:2rem;
+      margin-bottom:10px;
+      opacity:0.85;
+    }
+
+    .hero-header::before{
+      content:'☁️';
+      position:absolute;
+      left:60px;
+      top:20px;
+      font-size:3rem;
+      opacity:0.25;
+    }
+
+    .hero-header::after{
+      content:'🌈';
+      position:absolute;
+      right:60px;
+      top:20px;
+      font-size:3rem;
+      opacity:0.25;
+    }
+
+    .brand {
+      display: inline-block;
+      background: #7b4bb7;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      color: #6c2fa3;
+      margin-bottom: 15px;
+      text-shadow:0 4px 10px rgba(255,255,255,0.8);
+    }
+
+    .subtitle {
+      margin-top:10px;
+      max-width: 760px;
+      margin: auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #6f4d7f;
+    }
+
+    .missions-grid {
+      position:relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      padding: 30px;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .mission-card {
+      backdrop-filter:blur(4px);
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease;
+      border: 4px solid white;
+      position: relative;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .mission-header {
+      color: white;
+      text-align: center;
+      padding: 14px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .mission-content {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .mission-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      min-height: 60px;
+    }
+
+    .superpower {
+      display: inline-block;
+      background: #fff4c7;
+      padding: 8px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      color: #8a5c00;
+      font-weight: bold;
+    }
+
+    .mission-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .mission-btn {
+      border: none;
+      background: linear-gradient(to right, #8d57d9, #ff7eb6);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+
+    .mission-btn:hover {
+      opacity: 0.9;
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 999;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .popup-box {
+      background: white;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 35px;
+      padding: 35px;
+      text-align: center;
+      position: relative;
+      animation: popup 0.3s ease;
+      margin: 40px auto;
+      max-height: unset;
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #ff6b9d;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .popup h2 {
+      margin-bottom: 15px;
+      color: #6c2fa3;
+      font-size: 2rem;
+    }
+
+    .popup p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .challenge-box {
+      background: #fff6dc;
+      padding: 18px;
+      border-radius: 20px;
+      margin-top: 20px;
+      color: #7a5a00;
+      font-weight: bold;
+    }
+
+    .reward {
+      margin-top: 25px;
+      background: #f3e6ff;
+      padding: 18px;
+      border-radius: 18px;
+      color: #6c2fa3;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+    }
+
+    .magic-footer{
+      margin-top:70px;
+      padding:40px 10px;
+      background:linear-gradient(to top,#d9b3ff,#fdf1ff);
+      text-align:center;
+      border-top-left-radius:70px;
+      border-top-right-radius:70px;
+      position:relative;
+      box-shadow:0 -4px 18px rgba(0,0,0,0.08);
+    }
+
+    .footer-logo{
+      width:260px;
+      max-width:80%;
+      margin-bottom:10px;
+      filter:drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .popup-box {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero-header">
+  <div class="magic-stars">
+    ✨ ⭐ ✨
+  </div>
+  
+  <h1>15 спокойни мисии</h1>
+  <p class="subtitle">
+    Приключенска mini website книжка за бъдещи първокласници.
+    Учене чрез игра, спокойствие и магически мисии.
+  </p>
+</header>
+
+<section class="missions-grid" id="missions"></section>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <button class="close-btn" onclick="closePopup()">✕</button>
+    <div id="popup-content"></div>
+  </div>
+</div>
+
+
+
+<script>
+const missions = [
+  {
+    id:1,
+    emoji:'<div style="position:relative;display:inline-block;font-size:3.4rem;line-height:1;">📘<span style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-size:0.95rem;font-weight:bold;color:white;letter-spacing:1px;">АБВ</span></div>',
+    color:'#f6b93b',
+    title:'Изгубената буква',
+    superpower:'Любопитство',
+    story:'Помогни на изгубената буквичка да намери пътя към азбуката.',
+    reward:'⭐ Отключи суперсилата: Любопитство!',
+    tasks:[
+      {type:'choice',question:'Коя буква липсва? К _ Т К А',options:['А','О','У'],correct:'О'},
+      {type:'choice',question:'Коя е първата буква в думата КОТКА?',options:['К','Т','А'],correct:'К'},
+      {type:'checkbox',question:'Оцвети буквата А с любим цвят'}
+    ]
+  },
+  {
+    id:2,
+    emoji:'',
+    color:'#60a3ff',
+    title:'Тайната карта на числата',
+    superpower:'Внимание',
+    story:'Скрито съкровище чака смелите малки математици.',
+    reward:'⭐ Отключи суперсилата: Внимание!',
+    tasks:[
+      {type:'choice',question:'Кое число липсва? 1 2 _ 4 5',options:['3','6','8'],correct:'3'},
+      {type:'choice',question:'Кое число е най-голямо?',options:['2','9','5'],correct:'9'},
+      {type:'space-stars',question:'🚀 Помогни на астронавта! Натисни 7 светещи звездички. ⭐'}
+    ]
+  },
+  {
+    id:3,
+    emoji:'🎵',
+    color:'#9b59b6',
+    title:'Ловци на рими',
+    superpower:'Слушане',
+    story:'Римите се крият в приказната гора.',
+    reward:'⭐ Отключи суперсилата: Слушане!',
+    tasks:[
+      {type:'choice',question:'Коя дума се римува с МЕЧЕ?',options:['ПЕЧЕ','СТОЛ','ТОПКА'],correct:'ПЕЧЕ'},
+      {type:'choice',question:'Коя дума звучи подобно на КОТЕ?',options:['БОТЕ','КНИГА','ДЪРВО'],correct:'БОТЕ'},
+      {type:'checkbox',question:'Измисли своя смешна рима'}
+    ]
+  },
+  {
+    id:4,
+    emoji:'✏️',
+    color:'#e67e22',
+    title:'Спасителите на моливите',
+    superpower:'Фина моторика',
+    story:'Моливите са се разбъркали и чакат помощ.',
+    reward:'⭐ Отключи суперсилата: Фина моторика!',
+    tasks:[
+      {
+        type:'pencils',
+        question:'Натисни само сините моливи'
+      },
+      {
+        type:'trace',
+        question:'Проследи пунктирната линия с пръст'
+      },
+      {
+        type:'pencil-path',
+        question:'Помогни на моливчето да стигне до тетрадката'
+      }
+    ]
+  },
+  {
+    id:5,
+    emoji:'🔺',
+    color:'#27ae60',
+    title:'Островът на формите',
+    superpower:'Наблюдателност',
+    story:'На острова живеят кръгчета и триъгълници.',
+    reward:'⭐ Отключи суперсилата: Наблюдателност!',
+    tasks:[
+      {type:'choice',question:'Коя форма е кръг?',options:['🔵','🔺','⬛'],correct:'🔵'},
+      {type:'choice',question:'Коя форма има 3 страни?',options:['🔺','🔵','⭐'],correct:'🔺'},
+      {type:'checkbox',question:'Намери 3 кръгли предмета вкъщи'}
+    ]
+  }
+];
+
+missions.push(
+  {
+    id:6,
+    emoji:'🎒',
+    color:'#ff6b81',
+    title:'Мисия: Подреди раницата',
+    superpower:'Самостоятелност',
+    story:'Подготви раницата за първия учебен ден.',
+    reward:'⭐ Отключи суперсилата: Самостоятелност!',
+    tasks:[
+      {type:'choice',question:'Кое е нужно за училище?',options:['📚','🛏️','🍟'],correct:'📚'},
+      {type:'choice',question:'Къде стои тетрадката?',options:['🎒','🧊','🚿'],correct:'🎒'},
+      {type:'checkbox',question:'Подреди истинската си раница'}
+    ]
+  },
+  {
+    id:7,
+    emoji:'🚀',
+    color:'#3742fa',
+    title:'Космическо броене',
+    superpower:'Концентрация',
+    story:'Помогни на астронавта да преброи звездите.',
+    reward:'⭐ Отключи суперсилата: Концентрация!',
+    tasks:[
+      {type:'choice',question:'Колко са планетите? 🌍🌎🌏',options:['3','5','7'],correct:'3'},
+      {type:'stars',question:'Натисни върху 3 звездички'},
+      {type:'choice',question:'Кое число идва след 8?',options:['9','6','10'],correct:'9'},
+      {type:'checkbox',question:'Преброй 5 предмета около теб'}
+    ]
+  },
+  {
+    id:8,
+    emoji:'🚂',
+    color:'#00cec9',
+    title:'Буквеното влакче',
+    superpower:'Памет',
+    story:'Подреди буквите във влакчето.',
+    reward:'⭐ Отключи суперсилата: Памет!',
+    tasks:[
+      {type:'choice',question:'Коя буква липсва? В _ Д',options:['Г','Б','Ж'],correct:'Г'},
+      {type:'choice',question:'Коя буква липсва? А _ В',options:['Б','Г','Д'],correct:'Б'},
+      {type:'checkbox',question:'Кажи азбуката до 15-тата буква'}
+    ]
+  },
+  {
+    id:9,
+    emoji:'🔍',
+    color:'#f39c12',
+    title:'Детективи на звуци',
+    superpower:'Слушане',
+    story:'Открий правилните звуци.',
+    reward:'⭐ Отключи суперсилата: Слушане!',
+    tasks:[
+      {type:'choice',question:'С коя буква започва МЕЧЕ?',options:['М','Т','С'],correct:'М'},
+      {type:'choice',question:'С коя буква започва ТОПКА?',options:['Т','П','К'],correct:'Т'},
+      {type:'checkbox',question:'Ослушай се. 👂 Кое около теб издава звуци (шум)? Изслушай внимателно 3 звука. Назови ги! 🎵'}
+    ]
+  },
+  {
+    id:10,
+    emoji:'🌿',
+    color:'#2ecc71',
+    title:'Пътеката на спокойствието',
+    superpower:'Увереност',
+    story:'Следвай спокойната пътека.',
+    reward:'⭐ Отключи суперсилата: Увереност!',
+    tasks:[
+      {type:'checkbox',question:'Направи 3 дълбоки вдишвания'},
+      {type:'checkbox',question:'Усмихни се широко'},
+      {type:'checkbox',question:'Кажи: Аз мога!'}
+    ]
+  },
+  {
+    id:11,
+    emoji:'📖',
+    color:'#badc58',
+    title:'Търсачи на думи',
+    superpower:'Мислене',
+    story:'Намери скритите думи.',
+    reward:'⭐ Отключи суперсилата: Мислене!',
+    tasks:[
+      {type:'choice',question:'Кое е дума?',options:['МАМА','123','@@@'],correct:'МАМА'},
+      {type:'choice',question:'Коя дума започва с К?',options:['КОТКА','ЯБЪЛКА','ОБЛАК'],correct:'КОТКА'},
+      {type:'checkbox',question:'Огледай се наоколо. Къде можеш да откриеш думи? Прочети 2 думи, ако можеш'}
+    ]
+  },
+  {
+    id:12,
+    emoji:'🛒',
+    color:'#fd79a8',
+    title:'Веселият магазин',
+    superpower:'Практичност',
+    story:'Добре дошъл във веселия магазин! Днес ще пазаруваме умно и забавно.',
+    reward:'⭐ Отключи суперсилата: Практичност!',
+    tasks:[
+      {
+        type:'choice',
+        question:'Кое струва най-малко?',
+        options:['🍎 Ябълка — 1€','🧃 Сок — 2€','🚲 Колело — 200€'],
+        correct:'🍎 Ябълка — 1€'
+      },
+      {
+        type:'choice',
+        question:'Кой продукт можем да купим с 2 евро?',
+        options:['🍎 Ябълка — 1€','🧃 Сок — 2€','🚲 Колело — 200€'],
+        correct:'🧃 Сок — 2€'
+      },
+      {
+        type:'choice',
+        question:'Кой продукт е най-скъп?',
+        options:['🍎 Ябълка — 1€','🧃 Сок — 2€','🚲 Колело — 200€'],
+        correct:'🚲 Колело — 200€'
+      },
+      {
+        type:'choice',
+        question:'🧃 Купи сока! Коя монета ще избереш?',
+        options:['🪙 1 euro','🪙 2 euro','🪙 50 cent'],
+        correct:'🪙 2 euro'
+      }
+    ]
+  },
+  {
+    id:13,
+    emoji:'🛡️',
+    color:'#8e44ad',
+    title:'Училищни супергерои',
+    superpower:'Смелост',
+    story:'Открий своята суперсила.',
+    reward:'⭐ Отключи суперсилата: Смелост!',
+    tasks:[
+      {type:'choice',question:'Какво правят супергероите?',options:['Помагат','Плачат','Се крият'],correct:'Помагат'},
+      {type:'choice',question:'Коя е суперсила?',options:['Смелост','Страх','Мрънкане'],correct:'Смелост'},
+      {type:'checkbox',question:'Кажи: Аз съм смел!'}
+    ]
+  },
+  {
+    id:14,
+    emoji:'🏆',
+    color:'#16a085',
+    title:'Голямото класно приключение',
+    superpower:'Подготовка',
+    story:'Последната голяма мисия.',
+    reward:'⭐ Отключи суперсилата: Подготовка!',
+    tasks:[
+      {type:'choice',question:'Какво носим в училище?',options:['🎒','🍳','🚿'],correct:'🎒'},
+      {type:'choice',question:'Къде учат децата?',options:['🏫','🌋','🚀'],correct:'🏫'},
+      {type:'checkbox',question:'Подготви се за първия учебен ден'}
+    ]
+  },
+  {
+    id:15,
+    emoji:'⭐',
+    color:'#f1c40f',
+    title:'Тържество на първокласника',
+    superpower:'Аз мога!',
+    story:'Време е за празник.',
+    reward:'🏅 Ти си готов за 1. клас!',
+    tasks:[
+      {type:'choice',question:'Кой е герой?',options:['ТИ','ЧУДОВИЩЕ','ДРАКОН'],correct:'ТИ'},
+      {type:'choice',question:'Как се чувстваш?',options:['Горд','Тъжен','Сърдит'],correct:'Горд'},
+      {type:'checkbox',question:'Отпразнувай успеха си с усмивка'}
+    ]
+  }
+);
+
+const container = document.getElementById('missions');
+const popup = document.getElementById('popup');
+const popupContent = document.getElementById('popup-content');
+
+missions.forEach(mission => {
+  const card = document.createElement('div');
+  card.className = 'mission-card';
+
+  card.innerHTML = `
+    <div class="mission-header" style="background:${mission.color}">
+      Мисия ${mission.id}
+    </div>
+
+    <div class="mission-content">
+      <div class="emoji">${mission.emoji}</div>
+      <div class="mission-title">${mission.title}</div>
+      <div class="superpower">Суперсила: ${mission.superpower}</div>
+      <div class="mission-text">${mission.story}</div>
+      <button class="mission-btn" onclick="openMission(${mission.id})">🚪 Виж мисията</button>
+    </div>
+  `;
+
+  container.appendChild(card);
+});
+
+function openMission(id){
+  const mission = missions.find(m => m.id === id);
+
+  popup.style.display='flex';
+
+  popupContent.innerHTML = `
+    <div style="font-size:4rem">${mission.emoji}</div>
+    <h2>${mission.title}</h2>
+    <div class="superpower">⭐ ${mission.superpower}</div>
+    <p>${mission.story}</p>
+
+    <div class="challenge-box" id="tasks-container"></div>
+
+    <div class="reward">${mission.reward}</div>
+
+    
+
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+      <button class="mission-btn" onclick="closePopup()" style="background:linear-gradient(to right,#4ecdc4,#44a08d)">
+        🌈 Назад към играта
+      </button>
+    </div>
+  `;
+
+  const taskContainer = document.getElementById('tasks-container');
+
+  let completed = 0;
+
+  mission.tasks.forEach((task,index)=>{
+    const wrapper = document.createElement('div');
+    wrapper.style.marginBottom='14px';
+    wrapper.style.background='white';
+    wrapper.style.padding='14px';
+    wrapper.style.borderRadius='16px';
+
+    if(task.type==='choice'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:10px">${task.question}</div>
+        ${task.options.map(opt => `
+          <button onclick="checkAnswer(this,'${task.correct}')" style="margin:5px;padding:16px 20px;border:none;border-radius:16px;background:#ece7ff;cursor:pointer;font-size:1.3rem;font-weight:bold;min-width:80px;">
+            ${opt}
+          </button>
+        `).join('')}
+      `;
+    }
+
+    if(task.type==='checkbox'){
+      wrapper.innerHTML = `
+        <label style="display:flex;gap:10px;align-items:center;cursor:pointer;">
+          <input type="checkbox" onchange="markTask(this)">
+          <span>${task.question}</span>
+        </label>
+      `;
+    }
+
+    if(task.type==='stars'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:10px;font-weight:bold;">${task.question}</div>
+        <div style="display:flex;gap:12px;font-size:2.5rem;justify-content:center;">
+          <span class="star-item" onclick="toggleStar(this)">☆</span>
+          <span class="star-item" onclick="toggleStar(this)">☆</span>
+          <span class="star-item" onclick="toggleStar(this)">☆</span>
+          <span class="star-item" onclick="toggleStar(this)">☆</span>
+          <span class="star-item" onclick="toggleStar(this)">☆</span>
+        </div>
+      `;
+    }
+
+    if(task.type==='space-stars'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:14px;font-weight:bold;line-height:1.6;">${task.question}</div>
+
+        <div style="position:relative;background:linear-gradient(to bottom,#0b1b3b,#1b2d5a);border-radius:24px;padding:25px;min-height:220px;overflow:hidden;">
+
+          <div style="font-size:4rem;text-align:center;margin-bottom:12px;">🚀</div>
+
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;justify-items:center;">
+            ${Array.from({length:12}).map(()=>`
+              <span class="space-star" onclick="toggleSpaceStar(this)" style="font-size:2.4rem;cursor:pointer;transition:transform 0.2s;">☆</span>
+            `).join('')}
+          </div>
+
+        </div>
+      `;
+    }
+
+    if(task.type==='coins'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:12px;font-weight:bold;">${task.question}</div>
+
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+
+          <div class="coin-item cent" onclick="toggleCoin(this)">
+            <span>10</span>
+            <small>cent</small>
+          </div>
+
+          <div class="coin-item cent" onclick="toggleCoin(this)">
+            <span>20</span>
+            <small>cent</small>
+          </div>
+
+          <div class="coin-item euro" onclick="toggleCoin(this)">
+            <span>1</span>
+            <small>euro</small>
+          </div>
+
+          <div class="coin-item euro" onclick="toggleCoin(this)">
+            <span>2</span>
+            <small>euro</small>
+          </div>
+
+          <div class="coin-item cent" onclick="toggleCoin(this)">
+            <span>50</span>
+            <small>cent</small>
+          </div>
+
+        </div>
+      `;
+    }
+
+    if(task.type==='pencils'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:12px;font-weight:bold;font-size:1.05rem;line-height:1.6;">
+          ${task.question}
+        </div>
+
+        <div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:12px;">
+
+          <div onclick="selectBluePencil(this,'no')" style="cursor:pointer;transition:0.2s;font-size:4rem;filter:hue-rotate(320deg);">
+            ✏️
+          </div>
+
+          <div onclick="selectBluePencil(this,'yes')" style="cursor:pointer;transition:0.2s;font-size:4rem;filter:hue-rotate(180deg);">
+            ✏️
+          </div>
+
+          <div onclick="selectBluePencil(this,'yes')" style="cursor:pointer;transition:0.2s;font-size:4rem;filter:hue-rotate(180deg);">
+            ✏️
+          </div>
+
+          <div onclick="selectBluePencil(this,'no')" style="cursor:pointer;transition:0.2s;font-size:4rem;filter:hue-rotate(40deg);">
+            ✏️
+          </div>
+
+        </div>
+
+        <div style="margin-top:14px;font-size:0.95rem;color:#666;line-height:1.5;">
+          Намери и натисни само сините моливи.
+        </div>
+      `;
+    }
+
+    if(task.type==='trace'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:12px;font-weight:bold;line-height:1.5;">
+          ${task.question}
+        </div>
+
+        <div onclick="completeTrace(this)" style="font-size:2.8rem;letter-spacing:10px;cursor:pointer;user-select:none;color:#999;margin-top:12px;">
+          · · · · · · · · ·
+        </div>
+
+        <div style="margin-top:10px;font-size:0.92rem;color:#666;">
+          Натисни върху линията, за да я проследиш.
+        </div>
+      `;
+    }
+
+    if(task.type==='pencil-path'){
+      wrapper.innerHTML = `
+        <div style="margin-bottom:12px;font-weight:bold;line-height:1.5;">
+          ${task.question}
+        </div>
+
+        <div style="background:#f8f5ff;border-radius:24px;padding:22px;margin-top:10px;position:relative;overflow:hidden;">
+
+          <div style="position:relative;height:120px;">
+
+            <div id="draw-path" style="position:absolute;left:60px;top:56px;width:72%;height:8px;border-radius:20px;background:repeating-linear-gradient(to right,#c8b6ff 0 14px,transparent 14px 24px);"></div>
+
+            <div id="draw-line-fill" style="position:absolute;left:60px;top:56px;height:8px;width:0%;border-radius:20px;background:linear-gradient(to right,#74b9ff,#6c5ce7);transition:width 0.15s;"></div>
+
+            <span id="moving-pencil" 
+              ontouchmove="dragPencil(event,this)"
+              onmousemove="dragPencil(event,this)"
+              style="position:absolute;left:20px;top:18px;font-size:4rem;cursor:grab;user-select:none;touch-action:none;transition:transform 0.1s;">
+              ✏️
+            </span>
+
+            <span style="position:absolute;right:10px;top:12px;font-size:4rem;">
+              📓
+            </span>
+
+          </div>
+
+          <div style="margin-top:14px;font-size:0.92rem;color:#666;line-height:1.5;">
+            Плъзни моливчето по пътеката към тетрадката.
+          </div>
+
+        </div>
+      `;
+    }
+
+    taskContainer.appendChild(wrapper);
+  });
+
+  const progress = document.createElement('div');
+  progress.id='progress';
+  progress.style.marginTop='20px';
+  progress.style.fontWeight='bold';
+  progress.innerHTML='Изпълнени задачи: 0 / 3';
+  taskContainer.appendChild(progress);
+
+  window.totalTasks = mission.tasks.length;
+  window.completedTasks = 0;
+}
+
+function checkAnswer(button,correct){
+  if(button.dataset.done) return;
+
+  if(button.innerText.trim()===correct){
+    button.style.background='#7bed9f';
+    button.dataset.done='yes';
+    increaseProgress();
+  } else {
+    button.style.background='#ff7675';
+  }
+}
+
+function toggleSpaceStar(star){
+  if(star.dataset.active) return;
+
+  star.dataset.active='yes';
+  star.innerText='⭐';
+  star.style.transform='scale(1.2)';
+
+  const activeStars=document.querySelectorAll('.space-star[data-active="yes"]').length;
+
+  if(activeStars===7){
+    increaseProgress();
+  }
+}
+
+function toggleStar(star){
+  if(star.dataset.active) return;
+
+  star.innerText='⭐';
+  star.dataset.active='yes';
+
+  const activeStars=document.querySelectorAll('.star-item[data-active="yes"]').length;
+
+  if(activeStars===3){
+    increaseProgress();
+  }
+}
+
+function toggleCoin(coin){
+  if(coin.dataset.active) return;
+
+  coin.dataset.active='yes';
+  coin.style.background='radial-gradient(circle at 30% 30%, #fff6b0, #f1c40f 65%, #c89b00)';
+  coin.style.color='#7a5a00';
+  coin.style.border='3px solid #d4a017';
+  coin.style.transform='scale(1.15)';
+  coin.style.boxShadow='0 6px 14px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.5)';
+
+  const activeCoins=document.querySelectorAll('.coin-item[data-active="yes"]').length;
+
+  if(activeCoins===3){
+    increaseProgress();
+  }
+}
+
+function selectBluePencil(item,isCorrect){
+  if(item.dataset.done) return;
+
+  item.dataset.done='yes';
+
+  if(isCorrect==='yes'){
+    item.style.filter='drop-shadow(0 0 10px #74b9ff)';
+    item.style.transform='scale(1.2)';
+
+    const selected=document.querySelectorAll('[onclick*="selectBluePencil"][data-done="yes"]').length;
+
+    if(selected===2){
+      increaseProgress();
+    }
+  } else {
+    item.style.opacity='0.4';
+  }
+}
+
+function completeTrace(line){
+  if(line.dataset.done) return;
+
+  line.dataset.done='yes';
+  line.innerHTML='➖➖➖➖➖';
+  line.style.color='#6c5ce7';
+
+  increaseProgress();
+}
+
+function dragPencil(event,pencil){
+  if(pencil.dataset.done) return;
+
+  const container = pencil.parentElement;
+  const rect = container.getBoundingClientRect();
+
+  let clientX = event.touches ? event.touches[0].clientX : event.clientX;
+
+  let x = clientX - rect.left;
+
+  if(x < 20) x = 20;
+  if(x > rect.width - 90) x = rect.width - 90;
+
+  pencil.style.left = x + 'px';
+
+  const progress = ((x - 20) / (rect.width - 120)) * 100;
+
+  document.getElementById('draw-line-fill').style.width = progress + '%';
+
+  if(progress > 88){
+    pencil.dataset.done='yes';
+
+    pencil.style.transform='scale(1.15) rotate(10deg)';
+    pencil.style.filter='drop-shadow(0 0 12px #74b9ff)';
+
+    increaseProgress();
+  }
+}
+
+function markTask(checkbox){
+  if(checkbox.dataset.done) return;
+
+  checkbox.dataset.done='yes';
+  increaseProgress();
+}
+
+function increaseProgress(){
+  window.completedTasks++;
+
+  document.getElementById('progress').innerHTML = `Изпълнени задачи: ${window.completedTasks} / ${window.totalTasks}`;
+
+  if(window.completedTasks >= window.totalTasks){
+    missionComplete();
+  }
+}
+
+function missionComplete(){
+  const sound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
+  sound.play();
+
+  launchConfetti();
+
+  const success = document.createElement('div');
+  success.style.marginTop='20px';
+  success.style.background='#e8fff1';
+  success.style.padding='20px';
+  success.style.borderRadius='20px';
+  success.innerHTML=`
+    <h3>🎉 Браво! Мисията е завършена!</h3>
+    <p style="margin-top:10px">Ти отключи нова суперсила!</p>
+  `;
+
+  popupContent.appendChild(success);
+}
+
+function closePopup(){
+  popup.style.display='none';
+  popupContent.innerHTML='';
+}
+
+function launchConfetti(){
+  const colors=['#ff6b6b','#ffd93d','#6bcBef','#c77dff','#7bed9f'];
+
+  for(let i=0;i<120;i++){
+    const confetti=document.createElement('div');
+    confetti.style.position='fixed';
+    confetti.style.width='12px';
+    confetti.style.height='12px';
+    confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
+    confetti.style.left=(window.innerWidth/2)+'px';
+    confetti.style.top=(window.innerHeight/2)+'px';
+    confetti.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    confetti.style.zIndex='9999';
+    confetti.style.pointerEvents='none';
+    document.body.appendChild(confetti);
+
+    const angle=Math.random()*Math.PI*2;
+    const velocity=Math.random()*12+6;
+    let x=0;
+    let y=0;
+    let gravity=0.4;
+
+    const interval=setInterval(()=>{
+      x += Math.cos(angle)*velocity;
+      y += Math.sin(angle)*velocity + gravity;
+      gravity += 0.15;
+
+      confetti.style.transform=`translate(${x}px, ${y}px) rotate(${x+y}deg)`;
+      confetti.style.opacity='0.95';
+
+      if(y > window.innerHeight){
+        clearInterval(interval);
+        confetti.remove();
+      }
+    },16);
+  }
+}
+
+window.onclick=function(event){
+  if(event.target===popup){
+    closePopup();
+  }
+}
+</script>
+
+<footer class="magic-footer">
+
+  <div style="color:#6c2fa3;font-weight:bold;font-size:1.05rem;">
+    © Светът на Лети 🌟 by Lety Kids
+  </div>
+</footer>
+
+</body>
+</html>
